@@ -1,3 +1,5 @@
+from anbardari.database_communication import create_table
+
 entities = {
        'goods': [
         ('group_title', 'text'),
@@ -68,5 +70,5 @@ entities = {
     ],
 }
 
-
-
+for entity_name, entity_info in entities.iteritems():
+    create_table(entity_name, entity_info)

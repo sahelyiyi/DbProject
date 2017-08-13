@@ -7,16 +7,18 @@ conn = sqlite3.connect('example.db')
 
 c = conn.cursor()
 
-for entity_name, entity_info in entities.iteritems():
-    create_str = 'CREATE TABLE %s\n' % entity_name
+def create_table(table_name, table_info):
+    create_str = 'CREATE TABLE %s\n' % table_name
     attributes = []
-    for attribute, type in entity_info:
+    for attribute, type in table_info:
         attributes.append(attribute + ' ' + type)
     create_str += json.dumps(attributes)
     create_str = create_str.replace('"', '')
     create_str = create_str.replace('[', '(')
     create_str = create_str.replace(']', ')')
     c.execute(create_str)
+
+
 
 # c.execute('''CREATE TABLE stocks
 #              (date text, trans text, symbol text, qty real, price real)''')
