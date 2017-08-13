@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
-from anbardari.views import health_check
+from anbardari.views import helloworld
 
 urlpatterns = {
-    url(r'^health/?$', health_check),
+    url(r'^helloworld/?$', helloworld),
 }
