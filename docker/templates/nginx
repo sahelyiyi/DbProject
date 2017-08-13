@@ -1,0 +1,26 @@
+upstream upstream_anbardari {
+    server 127.0.0.1:{{ gunicorn_port }};
+}
+
+server {
+    listen {{ nginx_port }};
+    {% if not development %}
+    server_name {{ nginx_server_name }};
+    {% endif %}
+
+    allow all;
+
+    location / {
+        proxy_pass_header Server;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Scheme $scheme;
+        proxy_connect_timeout 4s;
+        proxy_read_timeout 60s;
+        proxy_pass http://upstream_anbardari;
+    }
+
+    access_log {{ nginx_access_log_path }};
+    error_log {{ nginx_error_log_path }};
+}
