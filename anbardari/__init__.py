@@ -1,7 +1,7 @@
 from anbardari.database_communication import create_table
 
 entities = {
-       'goods': [
+    'goods': [
         ('group_title', 'text'),
         ('base_price', 'real'),
         ('maintenance', 'text'),
@@ -67,6 +67,36 @@ entities = {
         ('personnel_code', 'text'),
         ('phone_number', 'integer'),
         ('work_hours', 'real'),
+    ],
+    'not_being_adjacent': [
+        ('title1', 'text'),
+        ('title2', 'text'),
+    ],
+    'receive': [
+        ('good_code', 'integer'),
+        ('member_code', 'integer'),
+        ('dischargerer_personal_code', 'integer'),
+        ('code', 'integer'),
+        ('date', 'numeric'),
+    ],
+    'surrender': [
+        ('good_code', 'integer'),
+        ('member_code', 'integer'),
+        ('transferee_personal_code', 'integer'),
+        ('code', 'integer'),
+        ('date', 'numeric'),
+    ],
+    'order': [
+        ('good_code', 'integer'),
+        ('member_code', 'integer'),
+        ('transferer_personal_code', 'integer'),
+            ('code', 'integer'),
+        ('date', 'numeric'),
+        ('cost', 'real'),
+    ],
+    'caring': [
+        ('good_code', 'integer'),
+        ('keeper_personal_code', 'integer'),
     ],
 }
 
