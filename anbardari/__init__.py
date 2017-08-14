@@ -14,7 +14,7 @@ entities = {
         ('price', 'real'),
         ('name', 'text'),
     ],
-    'group': [
+    'team': [
         ('title', 'text'),
         ('maintenance', 'text'),
         ('base_price', 'real'),
@@ -86,7 +86,7 @@ entities = {
         ('code', 'integer'),
         ('date', 'numeric'),
     ],
-    'order': [
+    'instruction': [
         ('good_code', 'integer'),
         ('member_code', 'integer'),
         ('transferer_personal_code', 'integer'),
@@ -100,5 +100,7 @@ entities = {
     ],
 }
 
+
 for entity_name, entity_info in entities.iteritems():
     create_table(entity_name, entity_info)
+
