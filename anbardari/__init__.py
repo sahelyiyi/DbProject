@@ -1,107 +1,144 @@
 from anbardari.database_communication import create_table
 
 entities = {
-    'goods': [
-        ('barcode', 'integer'),
-        ('code', 'integer'),
-        ('name', 'text'),
-        ('group_title', 'text'),
-        ('base_price', 'real'),
-        ('price', 'real'),
-        ('maintenance', 'text'),
-        ('production_date', 'numeric'),
-        ('entry_date', 'numeric'),
-        ('exit_date', 'numeric'),
-        ('producer', 'text'),
-    ],
-    'team': [
-        ('title', 'text'),
-        ('maintenance', 'text'),
-        ('base_price', 'real'),
-    ],
-    'person': [
-        ('name', 'text'),
-        ('national_code', 'integer'),
-        ('membership_code', 'integer'),
-        ('birth_date', 'numeric'),
-    ],
-    'member': [
-        ('name', 'text'),
-        ('code', 'integer'),
-    ],
-    'company': [
-        ('name', 'text'),
-        ('membership_code', 'integer'),
-        ('registration_code', 'integer'),
-    ],
-    'staff': [
-        ('national_code', 'integer'),
-        ('name', 'text'),
-        ('personnel_code', 'text'),
-        ('phone_number', 'integer'),
-    ],
-    'transferee': [
-        ('national_code', 'integer'),
-        ('name', 'text'),
-        ('personnel_code', 'text'),
-        ('phone_number', 'integer'),
-        ('work_hours', 'real'),
-    ],
-    'dischargerer': [
-        ('national_code', 'integer'),
-        ('name', 'text'),
-        ('personnel_code', 'text'),
-        ('phone_number', 'integer'),
-        ('work_hours', 'real'),
-    ],
-    'transferer': [
-        ('national_code', 'integer'),
-        ('name', 'text'),
-        ('personnel_code', 'text'),
-        ('phone_number', 'integer'),
-        ('work_hours', 'real'),
-    ],
-    'keeper': [
-        ('national_code', 'integer'),
-        ('name', 'text'),
-        ('personnel_code', 'text'),
-        ('phone_number', 'integer'),
-        ('work_hours', 'real'),
-    ],
-    'not_being_adjacent': [
-        ('title1', 'text'),
-        ('title2', 'text'),
-    ],
-    'receive': [
-        ('good_code', 'integer'),
-        ('member_code', 'integer'),
-        ('dischargerer_personal_code', 'integer'),
-        ('code', 'integer'),
-        ('date', 'numeric'),
-    ],
-    'transfer': [
-        ('code', 'integer'),
-        ('good_code', 'integer'),
-        ('member_code', 'integer'),
-        ('transferee_personal_code', 'integer'),
-        ('date', 'numeric'),
-    ],
-    'instruction': [
-        ('code', 'integer'),
-        ('good_code', 'integer'),
-        ('member_code', 'integer'),
-        ('transferer_personal_code', 'integer'),
-        ('date', 'numeric'),
-        ('cost', 'real'),
-    ],
-    'caring': [
-        ('good_code', 'integer'),
-        ('keeper_personal_code', 'integer'),
-    ],
-    'goods_basket': [],
+    'goods': {
+        'attrs_list': [
+            ('barcode', 'integer'),
+            ('code', 'integer'),
+            ('name', 'text'),
+            ('group_title', 'text'),
+            ('base_price', 'real'),
+            ('price', 'real'),
+            ('maintenance', 'text'),
+            ('production_date', 'numeric'),
+            ('entry_date', 'numeric'),
+            ('exit_date', 'numeric'),
+            ('producer', 'text'),
+        ]
+    },
+    'team': {
+        'attrs_list': [
+            ('title', 'text'),
+            ('maintenance', 'text'),
+            ('base_price', 'real'),
+        ]
+    },
+    'person': {
+        'attrs_list': [
+            ('name', 'text'),
+            ('national_code', 'integer'),
+            ('membership_code', 'integer'),
+            ('birth_date', 'numeric'),
+        ]
+    },
+    'member': {
+        'attrs_list': [
+            ('name', 'text'),
+            ('code', 'integer'),
+        ]
+    },
+    'company': {
+        'attrs_list': [
+            ('name', 'text'),
+            ('membership_code', 'integer'),
+            ('registration_code', 'integer'),
+        ]
+    },
+    'staff': {
+        'attrs_list': [
+            ('national_code', 'integer'),
+            ('name', 'text'),
+            ('personnel_code', 'text'),
+            ('phone_number', 'integer'),
+        ]
+    },
+    'transferee': {
+        'attrs_list': [
+            ('national_code', 'integer'),
+            ('name', 'text'),
+            ('personnel_code', 'text'),
+            ('phone_number', 'integer'),
+            ('work_hours', 'real'),
+        ]
+    },
+    'dischargerer': {
+        'attrs_list': [
+                ('national_code', 'integer'),
+                ('name', 'text'),
+                ('personnel_code', 'text'),
+                ('phone_number', 'integer'),
+                ('work_hours', 'real'),
+            ]
+    },
+    'transferer': {
+        'attrs_list': [
+            ('national_code', 'integer'),
+            ('name', 'text'),
+            ('personnel_code', 'text'),
+            ('phone_number', 'integer'),
+            ('work_hours', 'real'),
+        ]
+    },
+    'keeper': {
+        'attrs_list': [
+            ('national_code', 'integer'),
+            ('name', 'text'),
+            ('personnel_code', 'text'),
+            ('phone_number', 'integer'),
+            ('work_hours', 'real'),
+        ]
+    },
+    'not_being_adjacent': {
+        'attrs_list': [
+            ('title1', 'text'),
+            ('title2', 'text'),
+        ]
+    },
+    'receive': {
+        'attrs_list': [
+            ('good_code', 'integer'),
+            ('member_code', 'integer'),
+            ('dischargerer_personal_code', 'integer'),
+            ('code', 'integer'),
+            ('date', 'numeric'),
+        ]
+    },
+    'transfer': {
+        'attrs_list': [
+            ('code', 'integer'),
+            ('good_code', 'integer'),
+            ('member_code', 'integer'),
+            ('transferee_personal_code', 'integer'),
+            ('date', 'numeric'),
+        ]
+    },
+    'instruction': {
+        'attrs_list': [
+            ('code', 'integer'),
+            ('good_code', 'integer'),
+            ('member_code', 'integer'),
+            ('transferer_personal_code', 'integer'),
+            ('date', 'numeric'),
+            ('cost', 'real'),
+        ]
+    },
+    'caring': {
+        'attrs_list': [
+            ('good_code', 'integer'),
+            ('keeper_personal_code', 'integer'),
+        ]
+    },
+    'member_basket': {
+        'attrs_list': [
+            ('member_code', 'integer'),
+            ('member_goods_code', 'integer')
+        ],
+        'foreign_keys' : [
+            ('member_goods_code', 'goods(code)')
+        ],
+    },
 }
 
 
 for entity_name, entity_info in entities.iteritems():
     create_table(entity_name, entity_info)
-

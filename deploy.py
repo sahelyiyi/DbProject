@@ -116,16 +116,19 @@ def _deploy_container(version_name, container_settings, shared_dir):
     if launch_type == 'none':
         return
     elif launch_type == 'build':
+        print 'hereeee'
         dockerfile = os.path.join(BASE_DIR, container_settings['dockerfile'])
         build_options = ['-t', container_name]
         build_options += ['--build-arg', 'gunicorn_port=%s' % GUNICORN_PORT]
         build_options += ['-f', dockerfile, BASE_DIR]
+        print '!!!!!!!!!!!!!1'
         subprocess.call(['sudo', 'docker', 'build'] + build_options)
     elif launch_type == 'pull':
         image = container_settings['image']
         subprocess.call(['sudo', 'docker', 'pull', image])
 
     # Creating shared directory
+    print 'ACACAc'
     if not os.path.exists(shared_dir):
         os.makedirs(shared_dir)
 

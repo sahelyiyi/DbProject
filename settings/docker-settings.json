@@ -1,0 +1,15 @@
+{
+  "containers": [
+    {
+      "launch_type": "build",
+      "name": "anbardari",
+      "dockerfile": "docker/build/anbardari/Dockerfile",
+      "shared_volumes": {},
+      "extra_hosts": [],
+      "published_ports": [
+        "54321:54321"
+      ]
+    }
+  ],
+  "shared_dir": "docker/run/"
+}
