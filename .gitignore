@@ -4,8 +4,8 @@ nginx_logs/*
 logs/*
 !logs/PLACEHOLDER
 
-settings/settings.json
-settings/docker-settings.json
+#settings/settings.json
+#settings/docker-settings.json
 
 docker/run/*
 !docker/run/PLACEHOLDER

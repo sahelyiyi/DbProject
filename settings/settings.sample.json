@@ -2,7 +2,7 @@
   "secret_key": "secret",
   "debug": false,
   "service_workers": 40,
-  "nginx_server_name": "zq.cafebazaar.ir",
+  "nginx_server_name": "localhost",
   "nginx_port": 80,
   "gunicorn_port": 54321
 }
