@@ -6,6 +6,10 @@ conn = sqlite3.connect('example.db')
 c = conn.cursor()
 
 
+def convert_list_to_tuple_in_str(string):
+    return string.replace('[', '(').replace(']', ')')
+
+
 def _add_attrs(attrs_list):
     str = ''
     attributes = []
@@ -49,17 +53,18 @@ def get_items_by_fk(first_query, second_query):
     return second_items
 
 
-def update_task(conn, task):
-    """
-    update priority, begin_date, and end date of a task
-    :param conn:
-    :param task:
-    :return: project id
-    """
-    sql = ''' UPDATE tasks
-              SET priority = ? ,
-                  begin_date = ? ,
-                  end_date = ?
-              WHERE id = ?'''
-    cur = conn.cursor()
-    cur.execute(sql, task)
+def insert(table_name, data):
+    insert_str = 'INSERT INTO %s VALUES %s' % (table_name, json.dumps(data))
+    insert_str = convert_list_to_tuple_in_str(insert_str)
+    c.execute(insert_str)
+
+
+def check_exists(table_name, code_name, code):
+    try:
+        query = 'SELECT %s FROM %s Where %s = %s' % (code_name, table_name, code_name, code)
+        if len(get_items(query)):
+            return True
+        else:
+            return False
+    except:
+        return False

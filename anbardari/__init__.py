@@ -94,12 +94,12 @@ entities = {
             ('title2', 'text'),
         ]
     },
-    'receive': {
+    'instruction': {
         'attrs_list': [
+            ('code', 'integer'),
             ('good_code', 'integer'),
             ('member_code', 'integer'),
             ('dischargerer_personal_code', 'integer'),
-            ('code', 'integer'),
             ('date', 'numeric'),
         ]
     },
@@ -112,7 +112,7 @@ entities = {
             ('date', 'numeric'),
         ]
     },
-    'instruction': {
+    'recieve': {
         'attrs_list': [
             ('code', 'integer'),
             ('good_code', 'integer'),

@@ -1,3 +1,4 @@
+import datetime
 import json
 import unittest
 
@@ -31,3 +32,49 @@ class MemberTest(unittest.TestCase):
         print 'edit name from ' + prev_name + ' to ' + new_name
 
 
+    def test_deliver(self):
+        code = 1
+        good_code = 1
+        member_code = 1
+        transferee_personal_code = 1
+        date = datetime.datetime.now().strftime('YYYY-MM-dd')
+        if deliver(code, good_code, member_code, transferee_personal_code , date):
+            first_query = 'SELECT good_code FROM transfer Where code = %s' % member_code
+            second_query = 'SELECT name FROM goods Where code = %s'
+            goods = json.dumps(get_items_by_fk(first_query, second_query))
+            member_name = get_items('SELECT name FROM member Where code = %s' % member_code)[0]
+            print member_name + ' deliveries '+ goods
+        else:
+            print 'deliveries err: user does not exists.'
+
+    def test_take_delivery(self):
+        code = 1
+        good_code = 2
+        member_code = 1
+        transferer_personal_code = 1
+        date = datetime.datetime.now().strftime('YYYY-MM-dd')
+        cost = 10.5
+        if take_delivery(code, good_code, member_code, transferer_personal_code , date, cost):
+            first_query = 'SELECT good_code FROM recieve Where code = %s' % member_code
+            second_query = 'SELECT name FROM goods Where code = %s'
+            goods = json.dumps(get_items_by_fk(first_query, second_query))
+            member_name = get_items('SELECT name FROM member Where code = %s' % member_code)[0]
+            print member_name + ' take deliveries '+ goods
+        else:
+            print 'take deliveries err: user does not exists.'
+
+    def test_order(self):
+        code = 1
+        good_code = 2
+        member_code = 1
+        transferer_personal_code = 1
+        date = datetime.datetime.now().strftime('YYYY-MM-dd')
+        cost = 10.5
+        if take_delivery(code, good_code, member_code, transferer_personal_code , date, cost):
+            first_query = 'SELECT good_code FROM recieve Where code = %s' % member_code
+            second_query = 'SELECT name FROM goods Where code = %s'
+            goods = json.dumps(get_items_by_fk(first_query, second_query))
+            member_name = get_items('SELECT name FROM member Where code = %s' % member_code)[0]
+            print member_name + ' order '+ goods
+        else:
+            print 'order err: user does not exists.'

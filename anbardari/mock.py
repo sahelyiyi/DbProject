@@ -15,8 +15,12 @@ mock_data = {
         ('1', '1'),
         ('1', '2'),
         ('2', '1'),
-    ]
+    ],
+    'transferee': [
+        ('12345678910', 'transferee', '1', '22222222', '10')
+    ],
 }
+
 
 for entity_name , values in mock_data.iteritems():
     tempplate = json.dumps(["?"] * len(values[0])).replace('"', '').replace('[', '(').replace(']', ')')
