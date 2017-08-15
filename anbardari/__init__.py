@@ -79,18 +79,18 @@ entities = {
         ('code', 'integer'),
         ('date', 'numeric'),
     ],
-    'surrender': [
+    'transfer': [
+        ('code', 'integer'),
         ('good_code', 'integer'),
         ('member_code', 'integer'),
         ('transferee_personal_code', 'integer'),
-        ('code', 'integer'),
         ('date', 'numeric'),
     ],
     'instruction': [
+        ('code', 'integer'),
         ('good_code', 'integer'),
         ('member_code', 'integer'),
         ('transferer_personal_code', 'integer'),
-        ('code', 'integer'),
         ('date', 'numeric'),
         ('cost', 'real'),
     ],
@@ -98,6 +98,7 @@ entities = {
         ('good_code', 'integer'),
         ('keeper_personal_code', 'integer'),
     ],
+    'goods_basket': [],
 }
 
 
