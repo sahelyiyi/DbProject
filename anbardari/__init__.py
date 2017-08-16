@@ -1,5 +1,8 @@
 from anbardari.database_communication import create_table
 
+import json
+from anbardari.database_communication import c
+
 entities = {
     'goods': {
         'attrs_list': [
@@ -35,6 +38,7 @@ entities = {
         'attrs_list': [
             ('name', 'text'),
             ('code', 'integer'),
+            ('password', 'text'),
         ]
     },
     'company': {
@@ -134,7 +138,7 @@ entities = {
             ('member_code', 'integer'),
             ('member_goods_code', 'integer')
         ],
-        'foreign_keys' : [
+        'foreign_keys': [
             ('member_goods_code', 'goods(code)')
         ],
     },
@@ -142,4 +146,5 @@ entities = {
 
 
 for entity_name, entity_info in entities.iteritems():
+    # c.execute('DROP TABLE if exists %s' % entity_name)
     create_table(entity_name, entity_info)

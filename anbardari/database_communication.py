@@ -1,9 +1,14 @@
 import json
 import sqlite3
+import logging
+
 
 conn = sqlite3.connect('example.db')
 
 c = conn.cursor()
+
+
+logger = logging.getLogger(__name__)
 
 
 def convert_list_to_tuple_in_str(string):
@@ -26,6 +31,7 @@ def _add_fk(foreign_keys):
         str += 'FOREIGN KEY(%s) REFERENCES %s' % (key1, key2)
     return str
 
+
 def create_table(table_name, table_info):
     create_str = 'CREATE TABLE if not exists %s (\n' % table_name
     create_str += _add_attrs(table_info['attrs_list'])
@@ -35,11 +41,11 @@ def create_table(table_name, table_info):
     c.execute(create_str)
 
 
-def get_items(query):
-    items = []
-    for item in c.execute(query):
-        items.append(item[0])
-    return items
+def get_items(query, items=()):
+    results = []
+    for result in c.execute(query, items):
+        results.append(result[0])
+    return results
 
 
 def get_items_by_fk(first_query, second_query):
@@ -57,14 +63,17 @@ def insert(table_name, data):
     insert_str = 'INSERT INTO %s VALUES %s' % (table_name, json.dumps(data))
     insert_str = convert_list_to_tuple_in_str(insert_str)
     c.execute(insert_str)
+    conn.commit()
 
 
 def check_exists(table_name, code_name, code):
     try:
-        query = 'SELECT %s FROM %s Where %s = %s' % (code_name, table_name, code_name, code)
-        if len(get_items(query)):
+        query = 'SELECT %s FROM %s Where %s = ?' % (code_name, table_name, code_name)
+        if len(get_items(query, (code,))):
             return True
         else:
             return False
-    except:
+    except Exception as e:
+        logger.info('check exist exept')
+        logger.info(e)
         return False

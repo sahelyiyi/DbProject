@@ -2,7 +2,6 @@ import datetime
 import json
 import unittest
 
-from anbardari.database_communication import c
 from anbardari.member import *
 from anbardari.mock import *
 
@@ -31,7 +30,6 @@ class MemberTest(unittest.TestCase):
         new_name = get_items('SELECT name FROM member Where code = %s' % member_code)[0]
         print 'edit name from ' + prev_name + ' to ' + new_name
 
-
     def test_deliver(self):
         code = 1
         good_code = 1
@@ -43,7 +41,7 @@ class MemberTest(unittest.TestCase):
             second_query = 'SELECT name FROM goods Where code = %s'
             goods = json.dumps(get_items_by_fk(first_query, second_query))
             member_name = get_items('SELECT name FROM member Where code = %s' % member_code)[0]
-            print member_name + ' deliveries '+ goods
+            print member_name + ' deliveries ' + goods
         else:
             print 'deliveries err: user does not exists.'
 
@@ -59,7 +57,7 @@ class MemberTest(unittest.TestCase):
             second_query = 'SELECT name FROM goods Where code = %s'
             goods = json.dumps(get_items_by_fk(first_query, second_query))
             member_name = get_items('SELECT name FROM member Where code = %s' % member_code)[0]
-            print member_name + ' take deliveries '+ goods
+            print member_name + ' take deliveries ' + goods
         else:
             print 'take deliveries err: user does not exists.'
 
@@ -75,6 +73,6 @@ class MemberTest(unittest.TestCase):
             second_query = 'SELECT name FROM goods Where code = %s'
             goods = json.dumps(get_items_by_fk(first_query, second_query))
             member_name = get_items('SELECT name FROM member Where code = %s' % member_code)[0]
-            print member_name + ' order '+ goods
+            print member_name + ' order ' + goods
         else:
             print 'order err: user does not exists.'

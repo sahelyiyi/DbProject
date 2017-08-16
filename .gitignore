@@ -4,13 +4,15 @@ nginx_logs/*
 logs/*
 !logs/PLACEHOLDER
 
-#settings/settings.json
+settings/settings.json
 #settings/docker-settings.json
 
 docker/run/*
 !docker/run/PLACEHOLDER
 
 docker/build/anbardari/localtime
+
+settings/settings.json
 
 # Numerous always-ignore extensions
 *.backup

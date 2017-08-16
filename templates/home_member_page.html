@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Input data</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+            $(function() {
+            $( "#start_date" ).datepicker();
+            });
+            $(function() {
+            $( "#end_date" ).datepicker();
+            });
+        </script>
+    </head>
+    <body>
+        <form action="/member_get_goods/" method="POST">
+            <input type="hidden" name="code" value={{code}}><br>
+            <pre><input type="submit" value="get goods"></pre>
+        </form>
+        <form action="/member_edit_name/" method="POST">
+            <input type="hidden" name="code" value={{code}}><br>
+            <input type="text" name="new_name"><br>
+            <pre><input type="submit" value="edit name"></pre>
+        </form>
+        <form action="/member_cal_price/" method="POST">
+            <input type="hidden" name="code" value={{code}}><br>
+            <pre><input type="submit" value="calculate price"></pre>
+        </form>
+        <form action="/member_take_delivery/" method="POST">
+            <input type="hidden" name="code" value={{code}}><br>
+            <pre><input type="submit" value="take delivery"></pre>
+        </form>
+        <form action="/member_deliver/" method="POST">
+            <input type="hidden" name="code" value={{code}}><br>
+            <pre><input type="submit" value="deliver"></pre>
+        </form>
+        <form action="/member_order/" method="POST">
+            <input type="hidden" name="code" value={{code}}><br>
+            <pre><input type="submit" value="order"></pre>
+        </form>
+    </body>
+</html>
