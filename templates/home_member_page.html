@@ -17,21 +17,28 @@
     </head>
     <body>
         <form action="/member_get_goods/" method="POST">
+            <input type="hidden" name="code" value={{code}}><br>
             <pre><input type="submit" value="get goods"></pre>
         </form>
         <form action="/member_edit_name/" method="POST">
+            <input type="hidden" name="code" value={{code}}><br>
+            <input type="text" name="new_name"><br>
             <pre><input type="submit" value="edit name"></pre>
         </form>
         <form action="/member_cal_price/" method="POST">
+            <input type="hidden" name="code" value={{code}}><br>
             <pre><input type="submit" value="calculate price"></pre>
         </form>
         <form action="/member_take_delivery/" method="POST">
+            <input type="hidden" name="code" value={{code}}><br>
             <pre><input type="submit" value="take delivery"></pre>
         </form>
         <form action="/member_deliver/" method="POST">
+            <input type="hidden" name="code" value={{code}}><br>
             <pre><input type="submit" value="deliver"></pre>
         </form>
         <form action="/member_order/" method="POST">
+            <input type="hidden" name="code" value={{code}}><br>
             <pre><input type="submit" value="order"></pre>
         </form>
     </body>

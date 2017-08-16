@@ -8,6 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 from anbardari.database_communication import *
+from anbardari.member import *
 
 
 logger = logging.getLogger(__name__)
@@ -31,7 +32,9 @@ def register_member_page(request):
 
 
 def _sign_in_member(name, password, request):
+    logger.info('_sign_in_member')
     if check_exists('member', 'name', name):
+        logger.info('user exists')
         query = 'SELECT password FROM member Where name = ?'
         if get_items(query, (name,))[0] == password:
             code = get_items('SELECT code FROM member Where name = ?', (name,))[0]
@@ -40,6 +43,7 @@ def _sign_in_member(name, password, request):
         else:
             return HttpResponse('password is incorrect.')
     else:
+        logger.info(get_items('SELECT * FROM member'))
         return HttpResponse('user not exists.')
 
 
@@ -47,6 +51,7 @@ def _sign_in_member(name, password, request):
 def sign_in_member(request):
     name = request.POST['user_name']
     password = request.POST['password']
+    logger.info('hereeeee')
     return _sign_in_member(name, password, request)
 
 
@@ -66,17 +71,20 @@ def sign_up_member(request):
 
 @csrf_exempt
 def member_get_goods(request):
-    return HttpResponse(request.POST)
+    return HttpResponse(get_goods(request.POST['code']))
 
 
 @csrf_exempt
 def member_edit_name(request):
-    pass
+    if edit_name(request.POST['code'], request.POST['new_name']):
+        return HttpResponse('your name changed to %s' % request.POST['new_name'])
+    else:
+        return HttpResponse('your name did not eddited')
 
 
 @csrf_exempt
 def member_cal_price(request):
-    pass
+    return HttpResponse(calculate_keep_price(request.POST['code']))
 
 
 @csrf_exempt
