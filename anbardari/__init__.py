@@ -50,6 +50,7 @@ entities = {
             ('name', 'text'),
             ('personnel_code', 'text'),
             ('phone_number', 'integer'),
+            ('work_hours', 'real')
         ]
     },
     'transferee': {
