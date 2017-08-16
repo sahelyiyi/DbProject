@@ -28,6 +28,7 @@ def take_delivery(code, good_code, member_code, transferer_personal_code, date, 
 def edit_name(member_code, new_name):
     c.execute('UPDATE member SET name = ? WHERE code = ?', (new_name, member_code))
 
+
 def get_goods(member_code):
     first_query = 'SELECT member_goods_code FROM member_basket Where member_code = %s' % member_code
     second_query = 'SELECT name FROM goods Where code = %s'
