@@ -1,0 +1,8 @@
+{
+  "secret_key": "secret",
+  "debug": true,
+  "service_workers": 10,
+  "nginx_server_name": "192.168.105.54",
+  "nginx_port": 4040,
+  "gunicorn_port": 54333
+}
