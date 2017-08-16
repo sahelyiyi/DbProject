@@ -24,7 +24,14 @@ INSTALLED_APPS = [
 
 ROOT_URLCONF = 'urls'
 
-TEMPLATES = []
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [
+            '%s/templates' % BASE_DIR,
+        ],
+    },
+]
 
 TIME_ZONE = 'Asia/Tehran'
 LANGUAGE_CODE = 'fa-IR'

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Input data</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+            $(function() {
+            $( "#start_date" ).datepicker();
+            });
+            $(function() {
+            $( "#end_date" ).datepicker();
+            });
+        </script>
+    </head>
+    <body>
+       <form action="/sign_in_member/" method="POST">
+            <pre>Sign in:</pre>
+            <pre>User Name: <input type="text" name="user_name" id="user_name" value={{user_name}}></pre>
+            <pre>Password:   <input type="text" name="password" id="password" value={{password}}></pre>
+            <pre><input type="submit" value="sign in"></pre>
+        </form>
+        <form action="/sign_up_member/" method="POST">
+            <pre>Sign Up</pre>
+            <pre>User Name: <input type="text" name="new_user_name" value={{new_user_name}}></pre>
+            <pre>Password:   <input type="text" name="new_password" value={{new_password}}></pre>
+            <pre>Confirm Password:   <input type="text" name="conf_password" value={{conf_password}}></pre>
+            <pre><input type="submit" value="sign out"></pre>
+        </form>
+    </body>
+</html>
