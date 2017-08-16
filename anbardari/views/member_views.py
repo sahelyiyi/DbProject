@@ -100,3 +100,18 @@ def member_deliver(request):
 @csrf_exempt
 def member_order(request):
     pass
+
+
+@csrf_exempt
+def show_all_goods(request):
+    goods = get_items('SELECT * from goods')
+    template = loader.get_template('object_lists.html')
+    logger.info(request.POST)
+    return HttpResponse(template.render({'objects': goods, 'code': request.POST['code']}, request))
+
+
+@csrf_exempt
+def add_member_goods(request):
+    goods_code = request.POST['goods_code'][1:-1]
+    member_code = request.POST['code']
+    return HttpResponse(goods_code, member_code)

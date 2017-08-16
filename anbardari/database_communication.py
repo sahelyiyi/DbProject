@@ -44,7 +44,10 @@ def create_table(table_name, table_info):
 def get_items(query, items=()):
     results = []
     for result in c.execute(query, items):
-        results.append(result[0])
+        if len(result) == 1:
+            results.append(result[0])
+        else:
+            results.append(result)
     return results
 
 
@@ -55,7 +58,10 @@ def get_items_by_fk(first_query, second_query):
         first_items.append(first_item[0])
     for first_item in first_items:
         for item in c.execute(second_query % first_item):
-            second_items.append(item[0])
+            if len(item) == 1:
+                second_items.append(item[0])
+            else:
+                second_items.append(item)
     return second_items
 
 

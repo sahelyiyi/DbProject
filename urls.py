@@ -14,4 +14,6 @@ urlpatterns = {
     url(r'^member_take_delivery/?$', member_take_delivery),
     url(r'^member_deliver/?$', member_deliver),
     url(r'^member_order/?$', member_order),
+    url(r'^show_all_goods/?$', show_all_goods),
+    url(r'^add_member_goods/?$', add_member_goods),
 }
