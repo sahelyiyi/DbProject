@@ -51,7 +51,6 @@ def _sign_in_member(name, password, request):
 def sign_in_member(request):
     name = request.POST['user_name']
     password = request.POST['password']
-    logger.info('hereeeee')
     return _sign_in_member(name, password, request)
 
 
@@ -71,7 +70,14 @@ def sign_up_member(request):
 
 @csrf_exempt
 def member_get_goods(request):
-    return HttpResponse(get_goods(request.POST['code']))
+    member_goods = get_goods(request.POST['code'])
+    template = loader.get_template('object_lists.html')
+    context = {
+        'objects': member_goods,
+        'code': request.POST['code'],
+        'url': 'remove_from_basket'
+    }
+    return HttpResponse(template.render(context, request))
 
 
 @csrf_exempt
@@ -98,5 +104,35 @@ def member_deliver(request):
 
 
 @csrf_exempt
+def show_all_goods(request):
+    all_goods = get_items('SELECT name from goods')
+    logger.info(all_goods)
+    template = loader.get_template('object_lists.html')
+    context = {
+        'objects': all_goods,
+        'code': request.POST['code'],
+        'url': 'add_to_basket'
+    }
+    return HttpResponse(template.render(context, request))
+
+
+@csrf_exempt
 def member_order(request):
     pass
+
+
+
+@csrf_exempt
+def add_to_basket(request):
+    member_code = request.POST['code']
+    good_name = request.POST['good_name']
+    if add_good(member_code, good_name):
+        return show_all_goods(request)
+
+
+@csrf_exempt
+def remove_from_basket(request):
+    member_code = request.POST['code']
+    good_name = request.POST['good_name']
+    return HttpResponse(request.POST)
+

@@ -40,6 +40,24 @@ def get_goods(member_code):
     return get_items_by_fk(first_query, second_query)
 
 
+def add_good(member_code, good_name):
+    try:
+        good_code = get_items('SELECT code FROM goods Where name=?', (good_name,))[0]
+        insert('member_basket', (member_code, good_code))
+        return True
+    except:
+        return False
+
+
+def remove_good(member_code, good_name):
+    try:
+        good_code = get_items('SELECT code FROM goods Where name=?', (good_name,))[0]
+        delete('member_basket', ['member_code', 'member_goods_code'], [member_code, good_code])
+        return True
+    except:
+        return False
+
+
 def calculate_keep_price(member_code):
     sum_price = 0.0
     first_query = 'SELECT member_goods_code FROM member_basket Where member_code = %s' % member_code
