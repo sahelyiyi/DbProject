@@ -1,7 +1,6 @@
 from django.conf.urls import url
 
 from anbardari.views import *
-from anbardari.views.staff_views import *
 
 urlpatterns = {
     url(r'^/?$', base_page),
@@ -18,7 +17,6 @@ urlpatterns = {
     url(r'^member_deliver_list/?$', member_deliver_list),
     url(r'^member_order/?$', member_order),
     url(r'^show_all_goods/?$', show_all_goods),
-    url(r'^add_member_goods/?$', add_member_goods),
     url(r'^member_order_list/?$', member_order_list),
     url(r'^show_all_goods/?$', show_all_goods),
     url(r'^add_to_basket/?$', add_to_basket),
