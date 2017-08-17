@@ -19,14 +19,14 @@
        <form action="/sign_in_member/" method="POST">
             <pre>Sign in:</pre>
             <pre>User Name: <input type="text" name="user_name" id="user_name" value={{user_name}}></pre>
-            <pre>Password:   <input type="text" name="password" id="password" value={{password}}></pre>
+            <pre>Password:   <input type="password" name="password" id="password" value={{password}}></pre>
             <pre><input type="submit" value="sign in"></pre>
         </form>
         <form action="/sign_up_member/" method="POST">
             <pre>Sign Up</pre>
             <pre>User Name: <input type="text" name="new_user_name" value={{new_user_name}}></pre>
-            <pre>Password:   <input type="text" name="new_password" value={{new_password}}></pre>
-            <pre>Confirm Password:   <input type="text" name="conf_password" value={{conf_password}}></pre>
+            <pre>Password:   <input type="password" name="new_password" value={{new_password}}></pre>
+            <pre>Confirm Password:   <input type="password" name="conf_password" value={{conf_password}}></pre>
             <pre><input type="submit" value="sign up"></pre>
         </form>
     </body>

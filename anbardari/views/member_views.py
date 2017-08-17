@@ -2,11 +2,9 @@ import datetime
 import logging
 
 from django.http import HttpResponse, HttpResponseBadRequest
-from django.shortcuts import render
 from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 
-from anbardari.database_communication import *
 from anbardari.member import *
 from settings import DEFAULT_DELIVER_COST
 
