@@ -31,5 +31,6 @@ urlpatterns = {
     url(r'^staff_add_exit_date/?$', staff_add_exit_date),
     url(r'^staff_get_salary/?$', staff_get_salary),
     url(r'^staff_add_group/?$', staff_add_group),
+    url(r'^admin_add_goods/?$', staff_add_goods),
 
 }
