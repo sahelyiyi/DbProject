@@ -1,3 +1,4 @@
+#FROM registry.cafebazaar.ir:5000/common-images/ubuntu:trusty-py2-django
 FROM ubuntu:14.04
 MAINTAINER Sahel Sarcheshmehpour <sarcheshmehpours@gmail.com>
 ENV DEBIAN_FRONTEND noninteractive
@@ -17,6 +18,7 @@ RUN pip install python-daemon==2.1.0
 RUN pip install mock==1.3.0
 RUN pip install ipython==5.4.1
 
+
 # Get Gunicorn port as ARG
 ARG gunicorn_port
 
@@ -25,6 +27,7 @@ ADD . /opt/dbproject
 
 # Expose port
 EXPOSE $gunicorn_port
+#EXPOSE 54333
 
 # Switch to project dir
 WORKDIR /opt/dbproject
