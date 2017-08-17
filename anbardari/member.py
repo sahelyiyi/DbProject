@@ -36,7 +36,7 @@ def edit_name(member_code, new_name):
 
 def get_goods(member_code):
     first_query = 'SELECT member_goods_code FROM member_basket Where member_code = %s' % member_code
-    second_query = 'SELECT name FROM goods Where code = %s'
+    second_query = 'SELECT name FROM goods Where code = ?'
     return get_items_by_fk(first_query, second_query)
 
 
@@ -54,14 +54,14 @@ def remove_good(member_code, good_name):
         good_code = get_items('SELECT code FROM goods Where name=?', (good_name,))[0]
         delete('member_basket', ['member_code', 'member_goods_code'], [member_code, good_code])
         return True
-    except:
+    except Exception as e:
         return False
 
 
 def calculate_keep_price(member_code):
     sum_price = 0.0
     first_query = 'SELECT member_goods_code FROM member_basket Where member_code = %s' % member_code
-    second_query = 'SELECT base_price FROM goods Where code = %s'
+    second_query = 'SELECT base_price FROM goods Where code = ?'
     for price in get_items_by_fk(first_query, second_query):
         sum_price += price
     return sum_price

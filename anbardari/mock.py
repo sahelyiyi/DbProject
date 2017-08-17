@@ -21,6 +21,9 @@ mock_data = {
     'transferee': [
         ('12345678910', 'transferee', '1', '22222222', '10')
     ],
+    'dischargerer': [
+        ('12345678910', 'dischargerer', '1', '22222222', '10')
+    ],
 }
 
 
