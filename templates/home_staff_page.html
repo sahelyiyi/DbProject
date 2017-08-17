@@ -17,29 +17,35 @@
     </head>
     <body>
         <form action="/staff_add_goods/" method="POST">
-            <input type="hidden" name="personnel_code" value={{personnel_code}}><br>
-            <input type="text" name="barcode"><br>
-            <input type="text" name="code"><br>
-            <input type="text" name="name"><br>
-            <input type="text" name="group_title"><br>
-            <input type="text" name="base_price"><br>
-            <input type="text" name="price"><br>
-            <input type="text" name="maintenance"><br>
-            <input type="text" name="production_date"><br>
-            <input type="text" name="entry_date"><br>
-            <input type="text" name="exit_date"><br>
-            <input type="text" name="producer"><br>
+            <input type="hidden" name="personnel_code" value={{presonal_code}}"><br>
+            <input type="text" name="barcode" value="barcode" pattern="\d+" ><br>
+            <input type="text" name="code" value="code" pattern="\d+" ><br>
+            <input type="text" name="name" value="name" ><br>
+            <input type="text" name="group_title" value="group_title" ><br>
+            <input type="text" name="base_price" value="base_price" pattern="\d+" ><br>
+            <input type="text" name="price" value="price" pattern="\d+" ><br>
+            <input type="text" name="maintenance" value="maintenance" ><br>
+            <input type="text" name="production_date" value="production_date"><br>
+            <input type="text" name="entry_date" value="entry_date"><br>
+            <input type="text" name="exit_date" value="exit_date"><br>
+            <input type="text" name="producer" value="producer"><br>
             <pre><input type="submit" value="add goods"></pre>
         </form>
         <form action="/staff_add_exit_date/" method="POST">
             <input type="hidden" name="personnel_code" value={{personnel_code}}><br>
-            <input type="text" name="goods_barcode"><br>
-            <input type="text" name="exit_date"><br>
+            <input type="text"  name="goods_barcode" value="goods_barcode" ><br>
+            <input type="text" name="exit_date" value="exit_date"><br>
             <pre><input type="submit" value="add exit date"></pre>
         </form>
         <form action="/staff_get_salary/" method="POST">
             <input type="hidden" name="personnel_code" value={{personnel_code}}><br>
             <pre><input type="submit" value="get salary"></pre>
+        </form>
+        <form action="/staff_add_group/" method="POST">
+            <input type="text" name="title" value="title"><br>
+            <input type="text" name="maintenance" value="maintenance"><br>
+            <input type="text" name="base_price" value="base_price"><br>
+            <pre><input type="submit" value="add group"></pre>
         </form>
     </body>
 </html>

@@ -66,7 +66,6 @@ def get_items_by_fk(first_query, second_query, first_item=()):
                 second_results.append(second_result)
     return second_results
 
-
 def insert(table_name, data):
     insert_str = 'INSERT INTO %s VALUES %s' % (table_name, json.dumps(data))
     insert_str = convert_list_to_tuple_in_str(insert_str)

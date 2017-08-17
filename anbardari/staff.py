@@ -20,8 +20,10 @@ def add_exit_date(goods_barcode, exit_date):
 
 
 def get_salary(personnel_code):
-    salary = get_items('SELECT work_hours FROM staff WHERE personnel_code = ?', (personnel_code,))[0]
+    salary = get_items('SELECT work_hours FROM staff WHERE personnel_code = ?', (personnel_code,))
     if len(salary):
         return salary[0] * SALARY_PER_HOUR
     else:
         return -1
+def add_group(title, maintenance, base_price):
+    insert('team', [title, maintenance, base_price])

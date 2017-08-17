@@ -77,3 +77,9 @@ def staff_add_exit_date(request):
 
 def staff_get_salary(request):
     return HttpResponse(get_salary(request.POST['personnel_code']))
+
+@csrf_exempt
+def staff_add_group(request):
+    insert('team', [request.POST['title'], request.POST['maintenance'], request.POST['base_price']])
+    return HttpResponse('group has been made')
+

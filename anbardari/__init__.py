@@ -126,6 +126,12 @@ entities = {
             ('member_goods_code', 'goods(code)')
         ],
     },
+    'admin': {
+        'attrs_list': [
+            ('name', 'text'),
+            ('password', 'text'),
+        ]
+    },
 }
 
 
