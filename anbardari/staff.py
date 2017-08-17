@@ -20,9 +20,8 @@ def add_exit_date(goods_barcode, exit_date):
 
 
 def get_salary(personnel_code):
-    query = 'SELECT work_hours FROM staff WHERE personnel_code = %s' % personnel_code
-    items = get_items(query)
-    if len(items):
-        return items[0] * SALARY_PER_HOUR
+    salary = get_items('SELECT work_hours FROM staff WHERE personnel_code = ?', (personnel_code,))[0]
+    if len(salary):
+        return salary[0] * SALARY_PER_HOUR
     else:
         return -1

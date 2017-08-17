@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Input data</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+            $(function() {
+            $( "#start_date" ).datepicker();
+            });
+            $(function() {
+            $( "#end_date" ).datepicker();
+            });
+        </script>
+    </head>
+    <body>
+        <form action="/admin_save_goods/" method="POST">
+            <pre><input type="submit" value="save goods data"></pre>
+        </form>
+        <form action="/admin_monitor_staffs/" method="POST">
+            <pre><input type="submit" value="show staffs"></pre>
+        </form>
+        <form action="/admin_monitor_members/" method="POST">
+            <pre><input type="submit" value="show members"></pre>
+        </form>
+        <form action="/admin_calc_keep_price/" method="POST">
+            <pre><input type="submit" value="claculate keeping price"></pre>
+        </form>
+        <form action="/admin_define_staff/" method="POST">
+            <pre><input type="submit" value="define new staff"></pre>
+        </form>
+        <form action="/admin_define_member/" method="POST">
+            <pre><input type="submit" value="define new member"></pre>
+        </form>
+        <form action="/admin_monitor_all/" method="POST">
+            <pre><input type="submit" value="show status"></pre>
+        </form>
+        <form action="/admin_monitor_keeping_goods/" method="POST">
+            <pre><input type="submit" value="show keeping goods"></pre>
+        </form>
+        <form action="/admin_calc_staff/" method="POST">
+            <pre><input type="submit" value="claculate staff cost"></pre>
+        </form>
+        <form action="/admin_calc_all/" method="POST">
+            <pre><input type="submit" value="calculate all costs"></pre>
+        </form>
+    </body>
+</html>

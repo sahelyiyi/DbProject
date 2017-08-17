@@ -61,7 +61,6 @@ def sign_up_staff(request):
 
 @csrf_exempt
 def staff_add_goods(request):
-    #TODO: cherto perte
     return HttpResponse(add_goods(request.POST['barcode'], request.POST['code'], request.POST['name'],
                                   request.POST['group_title'], request.POST['base_price'], request.POST['price'],
                                   request.POST['maintenance'], request.POST['production_date'],
