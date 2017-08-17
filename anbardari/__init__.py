@@ -54,42 +54,27 @@ entities = {
             ('name', 'text'),
             ('personnel_code', 'text'),
             ('phone_number', 'integer'),
+            ('work_hours', 'real')
         ]
     },
     'transferee': {
         'attrs_list': [
-            ('national_code', 'integer'),
-            ('name', 'text'),
             ('personnel_code', 'text'),
-            ('phone_number', 'integer'),
-            ('work_hours', 'real'),
         ]
     },
     'dischargerer': {
         'attrs_list': [
-                ('national_code', 'integer'),
-                ('name', 'text'),
                 ('personnel_code', 'text'),
-                ('phone_number', 'integer'),
-                ('work_hours', 'real'),
             ]
     },
     'transferer': {
         'attrs_list': [
-            ('national_code', 'integer'),
-            ('name', 'text'),
             ('personnel_code', 'text'),
-            ('phone_number', 'integer'),
-            ('work_hours', 'real'),
         ]
     },
     'keeper': {
         'attrs_list': [
-            ('national_code', 'integer'),
-            ('name', 'text'),
             ('personnel_code', 'text'),
-            ('phone_number', 'integer'),
-            ('work_hours', 'real'),
         ]
     },
     'not_being_adjacent': {

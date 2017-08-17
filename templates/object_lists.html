@@ -1,9 +1,0 @@
-<ul>
-{% for object in objects %}
-    <form action="/add_member_goods/" method="POST">
-    <input type="hidden" name="goods_code" value={{object}}><br>
-    <li>{{ object }}</li> <pre><input type="submit" value="select"></pre>
-    </form>
-{% endfor %}
-
-</ul>

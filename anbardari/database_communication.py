@@ -1,6 +1,7 @@
 import json
 import sqlite3
 import logging
+import datetime
 
 
 conn = sqlite3.connect('example.db')
@@ -51,24 +52,34 @@ def get_items(query, items=()):
     return results
 
 
-def get_items_by_fk(first_query, second_query):
-    first_items = []
-    second_items = []
-    for first_item in c.execute(first_query):
-        first_items.append(first_item[0])
-    for first_item in first_items:
-        for item in c.execute(second_query % first_item):
-            if len(item) == 1:
-                second_items.append(item[0])
+
+def get_items_by_fk(first_query, second_query, first_item=()):
+    first_results = []
+    second_results = []
+    for first_result in c.execute(first_query, first_item):
+        first_results.append(first_result[0])
+    for first_result in first_results:
+        for second_result in c.execute(second_query, (first_result,)):
+            if len(second_result) == 1:
+                second_results.append(second_result[0])
             else:
-                second_items.append(item)
-    return second_items
+                second_results.append(second_result)
+    return second_results
 
 
 def insert(table_name, data):
     insert_str = 'INSERT INTO %s VALUES %s' % (table_name, json.dumps(data))
     insert_str = convert_list_to_tuple_in_str(insert_str)
     c.execute(insert_str)
+    conn.commit()
+
+
+def delete(table_name, names, attrs):
+    delete_str = 'DELETE FROM %s Where ' % table_name
+    for name in names:
+        delete_str += '%s=? and ' % name
+    delete_str = delete_str[:-5]
+    c.execute(delete_str, tuple(attrs))
     conn.commit()
 
 
@@ -80,6 +91,8 @@ def check_exists(table_name, code_name, code):
         else:
             return False
     except Exception as e:
-        logger.info('check exist exept')
-        logger.info(e)
         return False
+
+
+def get_date():
+    return datetime.datetime.now().strftime('YYYY-MM-dd')

@@ -112,3 +112,4 @@ LOGGING = {
 
 WSGI_APPLICATION = 'settings.wsgi:application'
 
+DEFAULT_DELIVER_COST = 10.0

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Input data</title>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+            $(function() {
+            $( "#start_date" ).datepicker();
+            });
+            $(function() {
+            $( "#end_date" ).datepicker();
+            });
+        </script>
+    </head>
+    <body>
+       <form action="/sign_in_staff/" method="POST">
+            <pre>Sign in:</pre>
+            <pre>Personnel Code: <input type="text" name="personnel_code" id="personnel_code" value={{personnel_code}}></pre>
+            <pre><input type="submit" value="sign in"></pre>
+        </form>
+        <form action="/sign_up_staff/" method="POST">
+            <pre>Sign Up</pre>
+            <pre>Personnel Code: <input type="text" name="new_personnel_code" value={{new_personnel_code}}></pre>
+            <pre>National Code:   <input type="text" name="national_code" value={{national_code}}></pre>
+            <pre>Name:   <input type="text" name="name" value={{name}}></pre>
+            <pre>Phone Number:   <input type="text" name="phone_number" value={{phone_number}}></pre>
+            <pre>Work Hours:   <input type="text" name="work_hours" value={{work_hours}}></pre>
+            <!-- change it to drop box -->
+            <pre>Staff Type:   <input type="text" name="staff_type" value={{staff_type}}></pre>
+            <pre><input type="submit" value="sign out"></pre>
+        </form>
+    </body>
+</html>

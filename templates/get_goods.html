@@ -1,0 +1,29 @@
+<html>
+<body>
+    <ul>
+        {% for object in objects %}
+            <li>{{ object }}</li>
+            <form action="/remove_from_basket/" method="POST">
+            <input type="hidden" name="code" value="{{code}}"><br>
+            <input type="hidden" name="good_name" value="{{object}}"><br>
+            <pre><input type="submit" name="buttom" value="remove"></pre>
+            </form>
+            <form action="/show_dischargerers/" method="POST">
+            <input type="hidden" name="code" value="{{code}}"><br>
+            <input type="hidden" name="good_name" value="{{object}}"><br>
+            <pre><input type="submit" name="buttom" value="order"></pre>
+            </form>
+            <form action="/show_transferers/" method="POST">
+            <input type="hidden" name="code" value="{{code}}"><br>
+            <input type="hidden" name="good_name" value="{{object}}"><br>
+            <pre><input type="submit" name="buttom" value="take delivery"></pre>
+            </form>
+            <!--<form action="/show_transferees/" method="POST">-->
+            <!--<input type="hidden" name="code" value="{{code}}"><br>-->
+            <!--<input type="hidden" name="good_name" value="{{object}}"><br>-->
+            <!--<pre><input type="submit" name="buttom" value="deliver"></pre>-->
+            <!--</form>-->
+        {% endfor %}
+    </ul>
+</body>
+</html>

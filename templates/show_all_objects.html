@@ -1,0 +1,19 @@
+
+<html>
+<body>
+    <ul>
+        {% for object in objects %}
+            <li>{{ object }}</li>
+            {% if url %}
+                <form action="/{{url}}/" method="POST">
+                    {% for key, key_value in data.items %}
+                        <input type="hidden" name="{{key}}" value="{{key_value}}"><br>
+                    {% endfor %}
+                <input type="hidden" name="{{item}}" value="{{object}}"><br>
+                <pre><input type="submit" name="buttom" value="{{bottom_value}}"></pre>
+                </form>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</body>
+</html>
