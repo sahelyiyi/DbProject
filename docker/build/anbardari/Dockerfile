@@ -17,7 +17,6 @@ RUN pip install Jinja2==2.8
 RUN pip install python-daemon==2.1.0
 RUN pip install mock==1.3.0
 RUN pip install ipython==5.4.1
->>>>>>> f0516d423986e4f359606b6439157681fd0bafb4
 
 
 # Get Gunicorn port as ARG

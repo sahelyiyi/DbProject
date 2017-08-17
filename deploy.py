@@ -119,7 +119,7 @@ def _deploy_container(version_name, container_settings, shared_dir):
     elif launch_type == 'build':
         dockerfile = os.path.join(BASE_DIR, container_settings['dockerfile'])
         build_options = ['-t', container_name]
-        # build_options += ['--build-arg', 'gunicorn_port=%s' % GUNICORN_PORT]
+        build_options += ['--build-arg', 'gunicorn_port=%s' % GUNICORN_PORT]
         build_options += ['-f', dockerfile, BASE_DIR]
         subprocess.call(['sudo', 'docker', 'build'] + build_options)
     elif launch_type == 'pull':
