@@ -16,8 +16,8 @@ def base_page(request):
 
 
 @csrf_exempt
-def register_member_page(request):
-    template = loader.get_template('register_member_page.html')
+def register_staff_page(request):
+    template = loader.get_template('register_staff_page.html')
     return HttpResponse(template.render({}, request))
 
 
