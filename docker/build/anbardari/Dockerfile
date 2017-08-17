@@ -27,7 +27,7 @@ ADD . /opt/dbproject
 
 # Expose port
 EXPOSE $gunicorn_port
-#EXPOSE 54333
+#EXPOSE 54444
 
 # Switch to project dir
 WORKDIR /opt/dbproject
