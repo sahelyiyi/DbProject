@@ -7,7 +7,7 @@
       "shared_volumes": {},
       "extra_hosts": [],
       "published_ports": [
-        "54333:54333"
+        "54444:54444"
       ]
     }
   ],

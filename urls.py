@@ -1,6 +1,7 @@
 from django.conf.urls import url
 
 from anbardari.views import *
+from anbardari.views.staff_views import *
 
 urlpatterns = {
     url(r'^/?$', base_page),
@@ -23,4 +24,10 @@ urlpatterns = {
     url(r'^show_dischargerers/?$', show_dischargerers),
     url(r'^show_transferees/?$', show_transferees),
     url(r'^show_transferers/?$', show_transferers),
+    url(r'^register_staff_page/?$', register_staff_page),
+    url(r'^sign_up_staff/?$', sign_up_staff),
+    url(r'^sign_in_staff/?$', sign_in_staff),
+    url(r'^staff_add_goods/?$', staff_add_goods),
+    url(r'^staff_add_exit_date/?$', staff_add_exit_date),
+    url(r'^staff_get_salary/?$', staff_get_salary),
 }
