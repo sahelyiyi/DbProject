@@ -6,32 +6,32 @@ from anbardari.database_communication import c
 entities = {
     'goods': {
         'attrs_list': [
-            ('barcode', 'numeric'),
+            ('barcode', 'integer'),
             ('code', 'integer'),
             ('name', 'text'),
             ('group_title', 'text'),
             ('base_price', 'real'),
             ('price', 'real'),
-            ('maintenance', 'integer'),
-            ('production_date', 'date'),
-            ('entry_date', 'date'),
-            ('exit_date', 'date'),
+            ('maintenance', 'text'),
+            ('production_date', 'numeric'),
+            ('entry_date', 'numeric'),
+            ('exit_date', 'numeric'),
             ('producer', 'text'),
         ]
     },
     'team': {
         'attrs_list': [
             ('title', 'text'),
-            ('maintenance', 'integer'),
+            ('maintenance', 'text'),
             ('base_price', 'real'),
         ]
     },
     'person': {
         'attrs_list': [
             ('name', 'text'),
-            ('national_code', 'numeric'),
+            ('national_code', 'integer'),
             ('membership_code', 'integer'),
-            ('birth_date', 'date'),
+            ('birth_date', 'numeric'),
         ]
     },
     'member': {
@@ -50,31 +50,31 @@ entities = {
     },
     'staff': {
         'attrs_list': [
-            ('national_code', 'numeric'),
+            ('national_code', 'integer'),
             ('name', 'text'),
-            ('personnel_code', 'numeric'),
-            ('phone_number', 'numeric'),
+            ('personnel_code', 'text'),
+            ('phone_number', 'integer'),
             ('work_hours', 'real')
         ]
     },
     'transferee': {
         'attrs_list': [
-            ('personnel_code', 'numeric'),
+            ('personnel_code', 'text'),
         ]
     },
     'dischargerer': {
         'attrs_list': [
-                ('personnel_code', 'numeric'),
+                ('personnel_code', 'text'),
             ]
     },
     'transferer': {
         'attrs_list': [
-            ('personnel_code', 'numeric'),
+            ('personnel_code', 'text'),
         ]
     },
     'keeper': {
         'attrs_list': [
-            ('personnel_code', 'numeric'),
+            ('personnel_code', 'text'),
         ]
     },
     'not_being_adjacent': {
@@ -88,8 +88,8 @@ entities = {
             ('code', 'integer'),
             ('good_code', 'integer'),
             ('member_code', 'integer'),
-            ('dischargerer_personnel_code', 'numeric'),
-            ('date', 'date'),
+            ('dischargerer_personnel_code', 'integer'),
+            ('date', 'numeric'),
         ]
     },
     'transfer': {
@@ -97,8 +97,8 @@ entities = {
             ('code', 'integer'),
             ('good_code', 'integer'),
             ('member_code', 'integer'),
-            ('transferee_personnel_code', 'numeric'),
-            ('date', 'date'),
+            ('transferee_personnel_code', 'integer'),
+            ('date', 'numeric'),
         ]
     },
     'recieve': {
@@ -106,15 +106,15 @@ entities = {
             ('code', 'integer'),
             ('good_code', 'integer'),
             ('member_code', 'integer'),
-            ('transferer_personnel_code', 'numeric'),
-            ('date', 'date'),
+            ('transferer_personnel_code', 'integer'),
+            ('date', 'numeric'),
             ('cost', 'real'),
         ]
     },
     'caring': {
         'attrs_list': [
             ('good_code', 'integer'),
-            ('keeper_personnel_code', 'numeric'),
+            ('keeper_personnel_code', 'integer'),
         ]
     },
     'member_basket': {
