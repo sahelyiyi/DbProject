@@ -18,7 +18,6 @@
     <body>
         <form action="/admin_add_goods/" method="POST">
             <input type="text" name="barcode" value="barcode" pattern="\d+" ><br>
-            <input type="text" name="code" value="code" pattern="\d+" ><br>
             <input type="text" name="name" value="name" ><br>
             <input type="text" name="group_title" value="group_title" ><br>
             <input type="text" name="base_price" value="base_price" pattern="\d+" ><br>
@@ -30,6 +29,12 @@
             <input type="text" name="producer" value="producer"><br>
             <pre><input type="submit" value="add goods"></pre>
         </form>
+        <form action="/admin_add_group/" method="POST">
+            <input type="text" name="title" value="title"><br>
+            <input type="text" name="maintenance" value="maintenance"><br>
+            <input type="text" name="base_price" value="base_price"><br>
+            <pre><input type="submit" value="add group"></pre>
+        </form>
         <form action="/admin_monitor_goods/" method="POST">
             <pre><input type="submit" value="show goods"></pre>
         </form>
@@ -39,25 +44,36 @@
         <form action="/admin_monitor_members/" method="POST">
             <pre><input type="submit" value="show members"></pre>
         </form>
-        <form action="/admin_calc_keep_price/" method="POST">
-            <pre><input type="submit" value="claculate keeping price"></pre>
+        <form action="/admin_cal_keep_price/" method="POST">
+            <pre><input type="submit" value="calculate keeping price"></pre>
         </form>
-        <form action="/admin_define_staff/" method="POST">
-            <pre><input type="submit" value="define new staff"></pre>
+        <form action="/admin_add_staff/" method="POST">
+            <input type="text" name="name" value="name" ><br>
+            <input type="text" name="personnel_code" value="personnel_code" ><br>
+            <input type="text" name="national_code" value="national_code" ><br>
+            <input type="text" name="phone_number" value="phone_number" pattern="\d+" ><br>
+            <input type="text" name="work_hours" value="work_hours"><br>
+            <select name="staff_type">
+                <option value="transferee">transferee</option>
+                <option value="dischargerer">dischargerer</option>
+                <option value="transferer">transferer</option>
+                <option value="keeper">keeper</option>
+            </select><br>
+            <pre><input type="submit" value="add new staff"></pre>
         </form>
-        <form action="/admin_define_member/" method="POST">
-            <pre><input type="submit" value="define new member"></pre>
-        </form>
-        <form action="/admin_monitor_all/" method="POST">
-            <pre><input type="submit" value="show status"></pre>
+        <form action="/admin_add_member/" method="POST">
+            <input type="text" name="name" value="name" ><br>
+            <input type="text" name="password" value="password" ><br>
+            <pre><input type="submit" value="add new member"></pre>
         </form>
         <form action="/admin_monitor_keeping_goods/" method="POST">
+            <input type="text" name="personnel_code" value="personnel_code"><br>
             <pre><input type="submit" value="show keeping goods"></pre>
         </form>
-        <form action="/admin_calc_staff/" method="POST">
-            <pre><input type="submit" value="claculate staff cost"></pre>
+        <form action="/admin_cal_staff/" method="POST">
+            <pre><input type="submit" value="calculate staff cost"></pre>
         </form>
-        <form action="/admin_calc_all/" method="POST">
+        <form action="/admin_cal_all/" method="POST">
             <pre><input type="submit" value="calculate all costs"></pre>
         </form>
     </body>

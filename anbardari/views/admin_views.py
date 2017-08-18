@@ -4,7 +4,7 @@ from django.template import loader
 from django.views.decorators.csrf import csrf_exempt
 
 
-from anbardari.database_communication import *
+from anbardari.admin import *
 
 
 @csrf_exempt
@@ -49,3 +49,90 @@ def sign_up_admin(request):
         return HttpResponse('user already exists')
     insert('admin', [name, password])
     return _sign_in_admin(name, password, request)
+
+
+@csrf_exempt
+def admin_monitor_goods(request):
+    try:
+        all_goods = get_all_goods()
+        template = loader.get_template('show_all_objects.html')
+        context = {
+            'objects': all_goods,
+        }
+        return HttpResponse(template.render(context, request))
+    except Exception as e:
+        return HttpResponse(e)
+
+
+@csrf_exempt
+def admin_monitor_staffs(request):
+    try:
+        all_goods = get_all_staffs()
+        template = loader.get_template('show_all_objects.html')
+        context = {
+            'objects': all_goods,
+        }
+        return HttpResponse(template.render(context, request))
+    except Exception as e:
+        return HttpResponse(e)
+
+
+@csrf_exempt
+def admin_monitor_members(request):
+    try:
+        all_goods = get_all_members()
+        template = loader.get_template('show_all_objects.html')
+        context = {
+            'objects': all_goods,
+        }
+        return HttpResponse(template.render(context, request))
+    except Exception as e:
+        return HttpResponse(e)
+
+
+@csrf_exempt
+def admin_cal_keep_price(request):
+    return HttpResponse(get_keep_price())
+
+
+@csrf_exempt
+def admin_add_staff(request):
+    national_code = request.POST['national_code']
+    name = request.POST['name']
+    personnel_code = request.POST['personnel_code']
+    phone_number = request.POST['phone_number']
+    work_hours = request.POST['work_hours']
+    staff_type = request.POST['staff_type']
+    add_staff(national_code, name, personnel_code, phone_number, work_hours, staff_type)
+    return HttpResponse('staff has been made')
+
+
+@csrf_exempt
+def admin_add_member(request):
+    name = request.POST['name']
+    password = request.POST['password']
+    add_member(name, password)
+    return HttpResponse('member has been made')
+
+
+@csrf_exempt
+def admin_monitor_keeping_goods(request):
+    try:
+        keeper_goods = get_keeper_goods(request.POST['personnel_code'])
+        template = loader.get_template('show_all_objects.html')
+        context = {
+            'objects': keeper_goods,
+        }
+        return HttpResponse(template.render(context, request))
+    except Exception as e:
+        return HttpResponse(e)
+
+
+@csrf_exempt
+def admin_cal_staff(request):
+    return HttpResponse(get_staff_price())
+
+
+@csrf_exempt
+def admin_cal_all(request):
+    return HttpResponse(get_keep_price() + get_staff_price())

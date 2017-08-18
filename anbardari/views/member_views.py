@@ -102,11 +102,11 @@ def member_take_delivery(request):  # sefaresh gereftan
     try:
         member_code = request.POST['code']
         good_name = request.POST['good_name']
-        transferer_personal_code = request.POST['transferer_code']
+        transferer_personnel_code = request.POST['transferer_code']
         date = get_date()
         code = len(get_items('SELECT * FROM instruction')) + 1
         good_code = get_items('SELECT code FROM goods Where name=?', (good_name,))[0]
-        take_delivery(code, good_code, member_code, transferer_personal_code, date, DEFAULT_DELIVER_COST)
+        take_delivery(code, good_code, member_code, transferer_personnel_code, date, DEFAULT_DELIVER_COST)
         delete('member_basket', ['member_code', 'member_goods_code'], [member_code, member_code])
         return load_back(request, 'take delivery request sent.', member_code)
     except Exception as e:
@@ -134,11 +134,11 @@ def member_deliver(request):
     try:
         member_code = request.POST['code']
         good_name = request.POST['good_name']
-        transferee_personal_code = request.POST['transferee_code']
+        transferee_personnel_code = request.POST['transferee_code']
         date = get_date()
         code = len(get_items('SELECT * FROM instruction')) + 1
         good_code = get_items('SELECT code FROM goods Where name=?', (good_name,))[0]
-        deliver(code, good_code, member_code, transferee_personal_code, date)
+        deliver(code, good_code, member_code, transferee_personnel_code, date)
         return load_back(request, 'delivery request sent.', member_code, 'show_all_goods')
     except Exception as e:
         return HttpResponse(e)
@@ -179,11 +179,11 @@ def member_order(request):
     try:
         member_code = request.POST['code']
         good_name = request.POST['good_name']
-        transferee_personal_code = request.POST['dischargerer_code']
+        transferee_personnel_code = request.POST['dischargerer_code']
         date = get_date()
         code = len(get_items('SELECT * FROM instruction')) + 1
         good_code = get_items('SELECT code FROM goods Where name=?', (good_name,))[0]
-        order(code, good_code, member_code, transferee_personal_code, date)
+        order(code, good_code, member_code, transferee_personnel_code, date)
         delete('member_basket', ['member_code', 'member_goods_code'], [member_code, good_code])
         return load_back(request, 'order request sent.', member_code)
     except Exception as e:
