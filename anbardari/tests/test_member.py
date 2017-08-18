@@ -34,9 +34,9 @@ class MemberTest(unittest.TestCase):
         code = 1
         good_code = 1
         member_code = 1
-        transferee_personal_code = 1
+        transferee_personnel_code = 1
         date = datetime.datetime.now().strftime('YYYY-MM-dd')
-        if deliver(code, good_code, member_code, transferee_personal_code , date):
+        if deliver(code, good_code, member_code, transferee_personnel_code , date):
             first_query = 'SELECT good_code FROM transfer Where code = %s' % member_code
             second_query = 'SELECT name FROM goods Where code = ?'
             goods = json.dumps(get_items_by_fk(first_query, second_query))
@@ -49,10 +49,10 @@ class MemberTest(unittest.TestCase):
         code = 1
         good_code = 2
         member_code = 1
-        transferer_personal_code = 1
+        transferer_personnel_code = 1
         date = datetime.datetime.now().strftime('YYYY-MM-dd')
         cost = 10.5
-        if take_delivery(code, good_code, member_code, transferer_personal_code , date, cost):
+        if take_delivery(code, good_code, member_code, transferer_personnel_code , date, cost):
             first_query = 'SELECT good_code FROM recieve Where code = %s' % member_code
             second_query = 'SELECT name FROM goods Where code = ?'
             goods = json.dumps(get_items_by_fk(first_query, second_query))
@@ -65,10 +65,10 @@ class MemberTest(unittest.TestCase):
         code = 1
         good_code = 2
         member_code = 1
-        transferer_personal_code = 1
+        transferer_personnel_code = 1
         date = datetime.datetime.now().strftime('YYYY-MM-dd')
         cost = 10.5
-        if take_delivery(code, good_code, member_code, transferer_personal_code , date, cost):
+        if take_delivery(code, good_code, member_code, transferer_personnel_code , date, cost):
             first_query = 'SELECT good_code FROM recieve Where code = %s' % member_code
             second_query = 'SELECT name FROM goods Where code = ?'
             goods = json.dumps(get_items_by_fk(first_query, second_query))

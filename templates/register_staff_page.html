@@ -29,7 +29,12 @@
             <pre>Phone Number:   <input type="text" name="phone_number" value={{phone_number}}></pre>
             <pre>Work Hours:   <input type="text" name="work_hours" value={{work_hours}}></pre>
             <!-- change it to drop box -->
-            <pre>Staff Type:   <input type="text" name="staff_type" value={{staff_type}}></pre>
+            <pre>Staff Type:   <select name="staff_type">
+                <option value="transferee">transferee</option>
+                <option value="dischargerer">dischargerer</option>
+                <option value="transferer">transferer</option>
+                <option value="keeper">keeper</option>
+            </select></pre>
             <pre><input type="submit" value="sign out"></pre>
         </form>
     </body>

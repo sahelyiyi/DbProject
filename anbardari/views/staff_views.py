@@ -61,10 +61,14 @@ def sign_up_staff(request):
 
 @csrf_exempt
 def staff_add_goods(request):
-    return HttpResponse(add_goods(request.POST['barcode'], request.POST['code'], request.POST['name'],
+    code = len(get_items('SELECT * FROM goods')) + 1
+    if add_goods(request.POST['barcode'], code, request.POST['name'],
                                   request.POST['group_title'], request.POST['base_price'], request.POST['price'],
                                   request.POST['maintenance'], request.POST['production_date'],
-                                  request.POST['entry_date'], request.POST['exit_date'], request.POST['producer']))
+                                  request.POST['entry_date'], request.POST['exit_date'], request.POST['producer']):
+        return HttpResponse('goods has been added')
+    else:
+        return HttpResponse('there is no group named %s' % request.POST['group_title'])
 
 
 @csrf_exempt
@@ -75,8 +79,10 @@ def staff_add_exit_date(request):
         return HttpResponse('the exit date could not set')
 
 
+@csrf_exempt
 def staff_get_salary(request):
     return HttpResponse(get_salary(request.POST['personnel_code']))
+
 
 @csrf_exempt
 def staff_add_group(request):

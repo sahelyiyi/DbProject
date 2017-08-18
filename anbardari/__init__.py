@@ -88,7 +88,7 @@ entities = {
             ('code', 'integer'),
             ('good_code', 'integer'),
             ('member_code', 'integer'),
-            ('dischargerer_personal_code', 'integer'),
+            ('dischargerer_personnel_code', 'integer'),
             ('date', 'numeric'),
         ]
     },
@@ -97,7 +97,7 @@ entities = {
             ('code', 'integer'),
             ('good_code', 'integer'),
             ('member_code', 'integer'),
-            ('transferee_personal_code', 'integer'),
+            ('transferee_personnel_code', 'integer'),
             ('date', 'numeric'),
         ]
     },
@@ -106,7 +106,7 @@ entities = {
             ('code', 'integer'),
             ('good_code', 'integer'),
             ('member_code', 'integer'),
-            ('transferer_personal_code', 'integer'),
+            ('transferer_personnel_code', 'integer'),
             ('date', 'numeric'),
             ('cost', 'real'),
         ]
@@ -114,7 +114,7 @@ entities = {
     'caring': {
         'attrs_list': [
             ('good_code', 'integer'),
-            ('keeper_personal_code', 'integer'),
+            ('keeper_personnel_code', 'integer'),
         ]
     },
     'member_basket': {

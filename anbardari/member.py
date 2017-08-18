@@ -1,25 +1,25 @@
 from anbardari.database_communication import *
 
 
-def order(code, good_code, member_code, dischargerer_personal_code, date):
-    if check_exists('dischargerer', 'personnel_code', dischargerer_personal_code):
-        insert('instruction', [code, good_code, member_code, dischargerer_personal_code, date])
+def order(code, good_code, member_code, dischargerer_personnel_code, date):
+    if check_exists('dischargerer', 'personnel_code', dischargerer_personnel_code):
+        insert('instruction', [code, good_code, member_code, dischargerer_personnel_code, date])
         return True
     else:
         return False
 
 
-def deliver(code, good_code, member_code, transferee_personal_code, date):#tahvil dadan
-    if check_exists('transferee', 'personnel_code', transferee_personal_code):
-        insert('transfer', [code, good_code, member_code, transferee_personal_code, date])
+def deliver(code, good_code, member_code, transferee_personnel_code, date):#tahvil dadan
+    if check_exists('transferee', 'personnel_code', transferee_personnel_code):
+        insert('transfer', [code, good_code, member_code, transferee_personnel_code, date])
         return True
     else:
         return False
 
 
-def take_delivery(code, good_code, member_code, transferer_personal_code, date, cost):#tahvil gereftan
-    if check_exists('transferer', 'personnel_code', transferer_personal_code):
-        insert('recieve', [code, good_code, member_code, transferer_personal_code, date, cost])
+def take_delivery(code, good_code, member_code, transferer_personnel_code, date, cost):#tahvil gereftan
+    if check_exists('transferer', 'personnel_code', transferer_personnel_code):
+        insert('recieve', [code, good_code, member_code, transferer_personnel_code, date, cost])
         return True
     else:
         return False
