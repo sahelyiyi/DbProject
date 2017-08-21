@@ -7,12 +7,6 @@ LIGHT_COST = 30000
 TIME_COST = 1000
 
 
-def date_to_integer(begin_date, end_date):
-    d1 = datetime.strptime(begin_date, "%Y-%m-%d")
-    d2 = datetime.strptime(end_date, "%Y-%m-%d")
-    return (d2 - d1).days
-
-
 def get_all_goods():
     return get_items('SELECT * from goods')
 
@@ -23,18 +17,6 @@ def get_all_staffs():
 
 def get_all_members():
     return get_items('SELECT * from member')
-
-
-def get_keep_price():
-    sum_price = 0.0
-    now = get_items('SELECT CURRENT_DATE')[0]
-    goods = get_items('SELECT maintenance, entry_date, exit_date FROM goods')
-    for good in goods:
-        if good[2] == 'NULL':
-            duration = date_to_integer(now.encode('utf-8'), good[1].encode('utf-8'))
-        else:
-            duration = date_to_integer(good[2].encode('utf-8'), good[1].encode('utf-8'))
-        sum_price += (good[0]%2) * TEMPERATURE_COST + (good[0]/2) * LIGHT_COST + duration * TIME_COST
 
 
 def add_staff(national_code, name, personnel_code, phone_number, work_hours, staff_type):
@@ -60,15 +42,23 @@ def add_member(name, password):
 
 
 def get_keeper_goods(personnel_code):
-    first_query = 'SELECT good_code FROM caring Where personnel_code = %s' % personnel_code
+    first_query = 'SELECT good_code FROM caring Where keeper_personnel_code = %s' % personnel_code
     second_query = 'SELECT * FROM goods Where code = ?'
     return get_items_by_fk(first_query, second_query)
 
 
+def get_keep_price():
+    sum_price = 0.0
+    goods = get_items('SELECT code, name, (maintenance%2) * ? + (maintenance/2) * ? + (julianday(exit_date) - julianday(entry_date)) * ? FROM goods', (TEMPERATURE_COST, LIGHT_COST, TIME_COST,))
+    for good in goods:
+        sum_price += good[2]
+    return goods, sum_price
+
+
 def get_staff_price():
     sum_price = 0.0
-    staffs_work_hours = get_items('SELECT work_hours FROM staff')
-    for work_hours in staffs_work_hours:
-        sum_price += work_hours * SALARY_PER_HOUR
-    return sum_price
+    staffs_work_hours = get_items('SELECT personnel_code, name, work_hours * ?  FROM staff', (SALARY_PER_HOUR,))
+    for staff in staffs_work_hours:
+        sum_price += staff[2]
+    return staffs_work_hours, sum_price
 

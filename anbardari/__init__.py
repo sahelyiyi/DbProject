@@ -12,7 +12,7 @@ entities = {
             ('group_title', 'text'),
             ('base_price', 'real'),
             ('price', 'real'),
-            ('maintenance', 'text'),
+            ('maintenance', 'integer'),
             ('production_date', 'numeric'),
             ('entry_date', 'numeric'),
             ('exit_date', 'numeric'),
@@ -22,7 +22,7 @@ entities = {
     'team': {
         'attrs_list': [
             ('title', 'text'),
-            ('maintenance', 'text'),
+            ('maintenance', 'integer'),
             ('base_price', 'real'),
         ]
     },
