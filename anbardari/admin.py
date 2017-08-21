@@ -49,7 +49,7 @@ def get_keeper_goods(personnel_code):
 
 def get_keep_price():
     sum_price = 0.0
-    goods = get_items('SELECT code, name, (maintenance%2) * ? + (maintenance/2) * ? + (julianday(exit_date) - julianday(entry_date)) * ? FROM goods', (TEMPERATURE_COST, LIGHT_COST, TIME_COST,))
+    goods = get_items('SELECT barcode, name, (maintenance%2) * ? + (maintenance/2) * ? + (julianday(exit_date) - julianday(entry_date)) * ? FROM goods', (TEMPERATURE_COST, LIGHT_COST, TIME_COST,))
     for good in goods:
         sum_price += good[2]
     return goods, sum_price

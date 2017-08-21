@@ -31,6 +31,8 @@ def _sign_in_staff(personnel_code, request):
             staff_type = "transferee"
         elif check_exists('dischargerer', 'personnel_code', personnel_code):
             staff_type = "dischargerer"
+        elif check_exists('keeper', 'personnel_code', personnel_code):
+            staff_type = "keeper"
         return HttpResponse(template.render(
             {'personnel_code': personnel_code,
              'staff_type': staff_type}, request))
@@ -84,6 +86,14 @@ def staff_add_exit_date(request):
         return HttpResponse('the exit date of goods with barcode %s has set to %s' % (request.POST['goods_barcode'], request.POST['exit_date']))
     else:
         return HttpResponse('the exit date could not set')
+
+
+@csrf_exempt
+def staff_add_caring(request):
+    if add_caring(request.POST['personnel_code'], request.POST['goods_barcode']):
+        return HttpResponse('the keeper with personnel code %s care good with %s barcode' % (request.POST['personnel_code'], request.POST['goods_barcode']))
+    else:
+        return HttpResponse('The keeper could not keep this item. Maybe this item or this personnel code doesn\'t exist.')
 
 
 @csrf_exempt

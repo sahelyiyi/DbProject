@@ -44,6 +44,12 @@
             <input type="text" name="exit_date" value="exit_date"><br>
             <pre><input type="submit" value="add exit date"></pre>
         </form>
+    {% elif staff_type == "keeper" %}
+        <form action="/staff_add_caring/" method="POST">
+            <input type="hidden" name="personnel_code" value={{personnel_code}}><br>
+            <input type="text"  name="goods_barcode" value="goods_barcode" ><br>
+            <pre><input type="submit" value="add item to keep"></pre>
+        </form>
     {% endif %}
         <form action="/staff_get_salary/" method="POST">
             <input type="hidden" name="personnel_code" value={{personnel_code}}><br>
