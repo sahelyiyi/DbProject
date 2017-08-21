@@ -26,7 +26,14 @@ def _sign_in_staff(personnel_code, request):
     if check_exists('staff', 'personnel_code', personnel_code):
         logger.info('staff exists')
         template = loader.get_template('home_staff_page.html')
-        return HttpResponse(template.render({'personnel_code': personnel_code}, request))
+        staff_type = "other"
+        if check_exists('transferee', 'personnel_code', personnel_code):
+            staff_type = "transferee"
+        elif check_exists('dischargerer', 'personnel_code', personnel_code):
+            staff_type = "dischargerer"
+        return HttpResponse(template.render(
+            {'personnel_code': personnel_code,
+             'staff_type': staff_type}, request))
     else:
         return HttpResponse('staff not exists.')
 
@@ -40,7 +47,7 @@ def sign_in_staff(request):
 @csrf_exempt
 def sign_up_staff(request):
     personnel_code = request.POST['new_personnel_code']
-    if check_exists('staff', 'new_personnel_code', personnel_code):
+    if check_exists('staff', 'personnel_code', personnel_code):
         return HttpResponse('staff already exists')
     staff_type = request.POST['staff_type']
     national_code = request.POST['national_code']
