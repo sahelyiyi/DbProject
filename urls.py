@@ -29,6 +29,7 @@ urlpatterns = {
     url(r'^sign_in_staff/?$', sign_in_staff),
     url(r'^staff_add_goods/?$', staff_add_goods),
     url(r'^staff_add_exit_date/?$', staff_add_exit_date),
+    url(r'^staff_add_caring/?$', staff_add_caring),
     url(r'^staff_get_salary/?$', staff_get_salary),
     url(r'^staff_add_group/?$', staff_add_group),
     url(r'^register_admin_page/?$', register_admin_page),

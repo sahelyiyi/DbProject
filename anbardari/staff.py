@@ -25,5 +25,16 @@ def get_salary(personnel_code):
         return salary[0] * SALARY_PER_HOUR
     else:
         return -1
+
+
 def add_group(title, maintenance, base_price):
     insert('team', [title, maintenance, base_price])
+
+
+def add_caring(personnel_code, goods_barcode):
+    if check_exists('keeper', 'personnel_code', personnel_code) and check_exists('goods', 'barcode', goods_barcode):
+        good_code = get_items('SELECT code FROM goods WHERE barcode = ?', (goods_barcode,))[0]
+        insert('caring', [good_code, personnel_code])
+        return True
+    else:
+        return False
