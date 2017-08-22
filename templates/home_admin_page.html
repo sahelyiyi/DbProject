@@ -22,7 +22,7 @@
             <input type="text" name="group_title" value="group_title" ><br>
             <input type="text" name="base_price" value="base_price" pattern="\d+" ><br>
             <input type="text" name="price" value="price" pattern="\d+" ><br>
-            <input type="text" name="maintenance" value="maintenance" ><br>
+            <input type="text" name="maintenance" value="maintenance" pattern="\d+" ><br>
             <input type="text" name="production_date" value="production_date"><br>
             <input type="text" name="entry_date" value="entry_date"><br>
             <input type="text" name="exit_date" value="exit_date"><br>
@@ -31,21 +31,9 @@
         </form>
         <form action="/admin_add_group/" method="POST">
             <input type="text" name="title" value="title"><br>
-            <input type="text" name="maintenance" value="maintenance"><br>
+            <input type="text" name="maintenance" value="maintenance" pattern="\d+"><br>
             <input type="text" name="base_price" value="base_price"><br>
             <pre><input type="submit" value="add group"></pre>
-        </form>
-        <form action="/admin_monitor_goods/" method="POST">
-            <pre><input type="submit" value="show goods"></pre>
-        </form>
-        <form action="/admin_monitor_staffs/" method="POST">
-            <pre><input type="submit" value="show staffs"></pre>
-        </form>
-        <form action="/admin_monitor_members/" method="POST">
-            <pre><input type="submit" value="show members"></pre>
-        </form>
-        <form action="/admin_cal_keep_price/" method="POST">
-            <pre><input type="submit" value="calculate keeping price"></pre>
         </form>
         <form action="/admin_add_staff/" method="POST">
             <input type="text" name="name" value="name" ><br>
@@ -66,9 +54,21 @@
             <input type="text" name="password" value="password" ><br>
             <pre><input type="submit" value="add new member"></pre>
         </form>
+        <form action="/admin_monitor_goods/" method="POST">
+            <pre><input type="submit" value="show goods"></pre>
+        </form>
+        <form action="/admin_monitor_staffs/" method="POST">
+            <pre><input type="submit" value="show staffs"></pre>
+        </form>
+        <form action="/admin_monitor_members/" method="POST">
+            <pre><input type="submit" value="show members"></pre>
+        </form>
         <form action="/admin_monitor_keeping_goods/" method="POST">
             <input type="text" name="personnel_code" value="personnel_code"><br>
             <pre><input type="submit" value="show keeping goods"></pre>
+        </form>
+        <form action="/admin_cal_keep_price/" method="POST">
+            <pre><input type="submit" value="calculate keeping price"></pre>
         </form>
         <form action="/admin_cal_staff/" method="POST">
             <pre><input type="submit" value="calculate staff cost"></pre>

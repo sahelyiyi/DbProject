@@ -91,11 +91,6 @@ def admin_monitor_members(request):
 
 
 @csrf_exempt
-def admin_cal_keep_price(request):
-    return HttpResponse(get_keep_price())
-
-
-@csrf_exempt
 def admin_add_staff(request):
     national_code = request.POST['national_code']
     name = request.POST['name']
@@ -124,15 +119,50 @@ def admin_monitor_keeping_goods(request):
             'objects': keeper_goods,
         }
         return HttpResponse(template.render(context, request))
+    except:
+        return HttpResponse("personnel code should be numeric")
+
+
+@csrf_exempt
+def admin_cal_keep_price(request):
+    try:
+        keep_price, sum_price = get_keep_price()
+        keep_price.append(['SUM', sum_price])
+        template = loader.get_template('show_all_objects.html')
+        context = {
+            'objects': keep_price,
+        }
+        return HttpResponse(template.render(context, request))
     except Exception as e:
         return HttpResponse(e)
 
 
 @csrf_exempt
 def admin_cal_staff(request):
-    return HttpResponse(get_staff_price())
+    try:
+        staff_price, sum_price = get_staff_price()
+        staff_price.append(['SUM', sum_price])
+        template = loader.get_template('show_all_objects.html')
+        context = {
+            'objects': staff_price,
+        }
+        return HttpResponse(template.render(context, request))
+    except Exception as e:
+        return HttpResponse(e)
 
 
 @csrf_exempt
 def admin_cal_all(request):
-    return HttpResponse(get_keep_price() + get_staff_price())
+    try:
+        staff_price, sum_staff_price = get_staff_price()
+        keep_price, sum_keep_price = get_keep_price()
+        all_price = staff_price + keep_price
+        sum_price = sum_staff_price + sum_keep_price
+        all_price.append(['SUM', sum_price])
+        template = loader.get_template('show_all_objects.html')
+        context = {
+            'objects': all_price,
+        }
+        return HttpResponse(template.render(context, request))
+    except Exception as e:
+        return HttpResponse(e)
