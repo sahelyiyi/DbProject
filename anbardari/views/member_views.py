@@ -94,7 +94,12 @@ def member_edit_name(request):
 
 @csrf_exempt
 def member_cal_price(request):
-    return HttpResponse(calculate_keep_price(request.POST['code']))
+    sum_price, goods = calculate_keep_price(request.POST['code'])
+    template = loader.get_template('show_all_objects.html')
+    context = {
+        'objects': [('sum', sum_price)] + goods,
+    }
+    return HttpResponse(template.render(context, request))
 
 
 @csrf_exempt
@@ -118,7 +123,7 @@ def member_take_delivery_list(request):
     try:
         member_code = request.POST['code']
         first_query = 'SELECT good_code from recieve Where member_code=?'
-        second_query = 'SELECT name from goods Where code=?'
+        second_query = 'SELECT name, price from goods Where code=?'
         all_take_deliveries = get_items_by_fk(first_query, second_query, (member_code,))
         template = loader.get_template('show_all_objects.html')
         context = {
@@ -149,7 +154,7 @@ def member_deliver_list(request):
     try:
         member_code = request.POST['code']
         first_query = 'SELECT good_code from transfer Where member_code=?'
-        second_query = 'SELECT name from goods Where code=?'
+        second_query = 'SELECT name, price from goods Where code=?'
         all_deliveries = get_items_by_fk(first_query, second_query, (member_code,))
         template = loader.get_template('show_all_objects.html')
         context = {
@@ -195,7 +200,7 @@ def member_order_list(request):
     try:
         member_code = request.POST['code']
         first_query = 'SELECT good_code from instruction Where member_code=?'
-        second_query = 'SELECT name from goods Where code=?'
+        second_query = 'SELECT name, price from goods Where code=?'
         all_orders = get_items_by_fk(first_query, second_query, (member_code,))
         template = loader.get_template('show_all_objects.html')
         context = {

@@ -6,8 +6,8 @@ from anbardari.database_communication import c, conn
 
 mock_data = {
     'goods': [
-        ('1', '1', 'shampoo', 'wash', '1.0', '2.0', 'null', 'null', 'null', 'null', 'golrang'),
-        ('2', '2', 'saboon', 'wash', '3.0', '4.0', 'null', 'null', 'null', 'null', 'null')
+        ('1', '1', 'shampoo', 'wash', '1.0', '2.0', 'null', '2016-01-01', '2016-01-01', 'null', 'golrang'),
+        ('2', '2', 'saboon', 'wash', '3.0', '4.0', 'null', '2016-01-01', '2016-01-01', 'null', 'null')
     ],
     'member': [
         ('sahel', '1', 'sahel'),
@@ -19,10 +19,10 @@ mock_data = {
         ('2', '1'),
     ],
     'transferee': [
-        ('12345678910', 'transferee', '1', '22222222', '10')
+        ('1',)
     ],
     'dischargerer': [
-        ('12345678910', 'dischargerer', '1', '22222222', '10')
+        ('2',)
     ],
 }
 

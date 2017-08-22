@@ -61,7 +61,8 @@ def remove_good(member_code, good_name):
 def calculate_keep_price(member_code):
     sum_price = 0.0
     first_query = 'SELECT member_goods_code FROM member_basket Where member_code = %s' % member_code
-    second_query = 'SELECT base_price FROM goods Where code = ?'
-    for price in get_items_by_fk(first_query, second_query):
+    second_query = 'SELECT name, base_price FROM goods Where code = ?'
+    goods = get_items_by_fk(first_query, second_query)
+    for name, price in goods:
         sum_price += price
-    return sum_price
+    return sum_price, goods
